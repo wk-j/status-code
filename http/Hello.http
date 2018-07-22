@@ -1,0 +1,12 @@
+GET https://localhost:5001/api/hello/hello
+
+###
+POST https://localhost:5001/api/hello/fromParamsString?data=aaa
+
+###
+POST https://localhost:5001/api/hello/fromBodyObject
+Content-Type: application/json
+
+{
+    "data": "Hello, world"
+}

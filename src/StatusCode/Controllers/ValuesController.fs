@@ -5,30 +5,26 @@ open System.Collections.Generic
 open System.Linq
 open System.Threading.Tasks
 open Microsoft.AspNetCore.Mvc
+open Microsoft.AspNetCore.Mvc
+open Microsoft.AspNetCore.Mvc
 
-[<Route("api/[controller]")>]
+type Message = {
+    Data: string
+}
+
+[<Route("api/[controller]/[action]")>]
 [<ApiController>]
-type ValuesController () =
+type HelloController() =
     inherit ControllerBase()
 
-    [<HttpGet>]
-    member this.Get() =
-        let values = [|"value1"; "value2"|]
-        ActionResult<string[]>(values)
-
-    [<HttpGet("{id}")>]
-    member this.Get(id:int) =
-        let value = "value"
-        ActionResult<string>(value)
+    [<HttpGet()>]
+    member this.Hello() =
+        this.StatusCode(700, { Data = "Hello"} )
 
     [<HttpPost>]
-    member this.Post([<FromBody>] value:string) =
-        ()
+    member this.FromParamsString(data: string) =
+        this.StatusCode(700, { Data = "-- " + data })
 
-    [<HttpPut("{id}")>]
-    member this.Put(id:int, [<FromBody>] value:string ) =
-        ()
-
-    [<HttpDelete("{id}")>]
-    member this.Delete(id:int) =
-        ()
+    [<HttpPost>]
+    member this.FromBodyObject(data: Message) =
+        this.StatusCode(700, { Data = "-- " + data.Data })
