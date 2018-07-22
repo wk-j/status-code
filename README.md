@@ -1,4 +1,4 @@
 ## Status Code
 
-- Status Code
-- Pinning Package
+- Non standard status code
+- Pin package versino with `Directory.Build.Targets`
