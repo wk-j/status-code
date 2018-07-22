@@ -1,0 +1,5 @@
+<Project>
+    <ItemGroup>
+        <PackageReference Update="Microsoft.AspNetCore.App" Version="2.1.2" />
+    </ItemGroup>
+</Project>
